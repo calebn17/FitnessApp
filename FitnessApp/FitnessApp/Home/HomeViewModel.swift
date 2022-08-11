@@ -6,3 +6,11 @@
 //
 
 import Foundation
+import FirebaseAuth
+
+struct HomeViewModel {
+    
+    var isNotAuthenticated: Bool {
+        Auth.auth().currentUser == nil
+    }
+}

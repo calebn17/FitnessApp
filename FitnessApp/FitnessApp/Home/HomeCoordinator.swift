@@ -19,17 +19,24 @@ final class HomeCoordinator: NSObject, Coordinator {
 
     func start() {
         let vc = HomeViewController()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 
     func childDidFinish(_ child: Coordinator?) {
-            for (index, coordinator) in childCoordinators.enumerated() {
-                if coordinator === child {
-                    childCoordinators.remove(at: index)
-                    break
-                }
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
             }
         }
+    }
+    
+    func presentLogin(sender: HomeViewController) {
+        let vc = LoginViewController()
+        vc.modalPresentationStyle = .fullScreen
+        sender.present(vc, animated: true)
+    }
 }
 
 extension HomeCoordinator: UINavigationControllerDelegate {

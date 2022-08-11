@@ -20,7 +20,6 @@ class MainTabBarController: UITabBarController {
         home.start()
         settings.start()
         profile.start()
-        settings.start()
         
         let nav1 = home.navigationController
         let nav2 = settings.navigationController
@@ -35,7 +34,7 @@ class MainTabBarController: UITabBarController {
         nav3.navigationBar.prefersLargeTitles = true
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gear"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), tag: 1)
         nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 1)
         
         setViewControllers([nav1,nav2,nav3], animated: false)
