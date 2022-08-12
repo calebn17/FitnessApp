@@ -7,13 +7,17 @@
 
 import UIKit
 
+//MARK: - Protocol
 protocol RegisterViewControllerDelegate: AnyObject {
-    func didTapRegisterButton(_ sender: RegisterViewController, user: User, password: String)
+    func didTapRegisterButton(_ sender: RegisterViewController, user: User, password: String, imageData: Data?)
 }
 
 class RegisterViewController: UIViewController {
+    
+//MARK: - Properties
     weak var coordinator: OnboardingCoordinator?
     weak var delegate: RegisterViewControllerDelegate?
+    private var image: UIImage?
     
 //MARK: - SubViews
     private let imagePickerView: CustomImageView = {
@@ -21,6 +25,7 @@ class RegisterViewController: UIViewController {
         imageView.image = UIImage(systemName: "person")
         imageView.tintColor = .label
         imageView.layer.cornerRadius = K.userImageSize*1.5/2
+        imageView.isUserInteractionEnabled = true
         return imageView
     }()
     
@@ -55,6 +60,7 @@ class RegisterViewController: UIViewController {
         return button
     }()
 
+//MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -64,6 +70,7 @@ class RegisterViewController: UIViewController {
         addActions()
     }
     
+//MARK: - Configure
     private func configureSubviews() {
         view.addSubview(imagePickerView)
         view.addSubview(usernameField)
@@ -74,16 +81,21 @@ class RegisterViewController: UIViewController {
         emailField.delegate = self
         passwordField.delegate = self
     }
-    
+
     private func configureNavBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close, target: self, action: #selector(didTapClose))
     }
     
     private func addActions() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapOnImagePicker))
+        imagePickerView.addGestureRecognizer(tap)
         registerButton.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
     }
 
 //MARK: - Actions
+    @objc private func didTapOnImagePicker() {
+        coordinator?.presentImagePicker(sender: self)
+    }
     @objc private func didTapClose() {
         coordinator?.dismissRegister(sender: self)
     }
@@ -96,19 +108,24 @@ class RegisterViewController: UIViewController {
         guard let email = emailField.text,
               let username = usernameField.text,
               let password = passwordField.text,
+              let image = self.image,
               !email.trimmingCharacters(in: .whitespaces).isEmpty,
               !username.trimmingCharacters(in: .whitespaces).isEmpty,
               !password.trimmingCharacters(in: .whitespaces).isEmpty,
               email.contains("@"), email.contains(".com"),
               password.count > 4
-        else {return}
+        else {
+            coordinator?.presentError(sender: self)
+            return
+        }
         
         let user = User(username: username.lowercased(), email: email.lowercased())
         coordinator?.dismissRegister(sender: self)
-        delegate?.didTapRegisterButton(self, user: user, password: password.lowercased())
+        delegate?.didTapRegisterButton(self, user: user, password: password.lowercased(), imageData: image.pngData())
     }
 }
 
+//MARK: - TextField Methods
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == usernameField {
@@ -124,6 +141,22 @@ extension RegisterViewController: UITextFieldDelegate {
     }
 }
 
+//MARK: - ImagePicker Methods
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {return}
+        self.image = image
+        imagePickerView.image = image
+    }
+}
+
+//MARK: - Constraints
 extension RegisterViewController {
     private func configureConstraints() {
         let imagePickerViewConstraints = [

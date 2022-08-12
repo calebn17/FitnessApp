@@ -13,5 +13,15 @@ final class StorageManager {
     private let storage = Storage.storage().reference()
     private init() {}
     
+    @discardableResult
+    func uploadProfilePicture(user: User, imageData: Data?) async throws -> Bool {
+        guard let data = imageData else {return false}
+        storage.child(user.username).child("profile_picture.png").putData(data)
+        return true
+    }
+    
+    func downloadProfilePicture(user: User) async throws -> URL? {
+        return try await storage.child(user.username).child("profile_picture.png").downloadURL()
+    }
     
 }

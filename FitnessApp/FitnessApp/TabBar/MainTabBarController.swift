@@ -22,8 +22,8 @@ class MainTabBarController: UITabBarController {
         profile.start()
         
         let nav1 = home.navigationController
-        let nav2 = settings.navigationController
-        let nav3 = profile.navigationController
+        let nav3 = settings.navigationController
+        let nav2 = profile.navigationController
         
         nav1.navigationBar.tintColor = .white
         nav2.navigationBar.tintColor = .white
@@ -34,8 +34,8 @@ class MainTabBarController: UITabBarController {
         nav3.navigationBar.prefersLargeTitles = true
         
         nav1.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "house"), tag: 1)
-        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), tag: 1)
-        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 1)
+        nav3.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "gearshape"), tag: 1)
+        nav2.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "person"), tag: 1)
         
         setViewControllers([nav1,nav2,nav3], animated: false)
         

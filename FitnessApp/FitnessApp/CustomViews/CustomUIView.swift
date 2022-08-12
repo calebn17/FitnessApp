@@ -12,6 +12,7 @@ class CustomImageView: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
+        contentMode = .scaleAspectFill
         layer.masksToBounds = true
         layer.borderColor = UIColor.label.cgColor
         layer.borderWidth = 1

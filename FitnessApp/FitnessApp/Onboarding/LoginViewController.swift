@@ -81,7 +81,10 @@ class LoginViewController: UIViewController {
               !password.trimmingCharacters(in: .whitespaces).isEmpty,
               email.contains("@"), email.contains(".com"),
               password.count > 4
-        else {return}
+        else {
+            coordinator?.presentError(sender: self)
+            return
+        }
         
         Task {
             try await OnboardingViewModel.loginUser(email: email.lowercased(), password: password.lowercased())
@@ -96,10 +99,10 @@ class LoginViewController: UIViewController {
 
 //MARK: - RegisterVC Methods
 extension LoginViewController: RegisterViewControllerDelegate {
-    func didTapRegisterButton(_ sender: RegisterViewController, user: User, password: String) {
+    func didTapRegisterButton(_ sender: RegisterViewController, user: User, password: String, imageData: Data?) {
         coordinator?.dismissLogin(sender: self)
         Task {
-            try await OnboardingViewModel.registerUser(user: user, password: password)
+            try await OnboardingViewModel.registerUser(user: user, password: password, imageData: imageData)
         }
     }
 }
