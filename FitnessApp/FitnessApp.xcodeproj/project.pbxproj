@@ -38,6 +38,10 @@
 		AF69C11B28A595B6002CA2AE /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C11A28A595B6002CA2AE /* StorageManager.swift */; };
 		AF69C11D28A595CA002CA2AE /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C11C28A595CA002CA2AE /* DatabaseManager.swift */; };
 		AF69C12028A5968B002CA2AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C11F28A5968B002CA2AE /* User.swift */; };
+		AF69C12328A5E4FA002CA2AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */; };
+		AF69C12728A5E6A8002CA2AE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12628A5E6A8002CA2AE /* CustomButton.swift */; };
+		AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */; };
+		AF69C12B28A5F300002CA2AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12A28A5F300002CA2AE /* Constants.swift */; };
 		AFF0511728A5673200A11E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0511628A5673200A11E10 /* AppDelegate.swift */; };
 		D2790401EF95A1B04B5E83E5 /* Pods_FitnessAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90DA2D6A87C4EE7C48103214 /* Pods_FitnessAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -101,6 +105,10 @@
 		AF69C11A28A595B6002CA2AE /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		AF69C11C28A595CA002CA2AE /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		AF69C11F28A5968B002CA2AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		AF69C12628A5E6A8002CA2AE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		AF69C12A28A5F300002CA2AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AFF0511628A5673200A11E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B88D346021C2CF7AA738C79A /* Pods-FitnessApp-FitnessAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FitnessApp-FitnessAppUITests/Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3DD4AB7714C06921B5E1205 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -182,13 +190,14 @@
 		AF5C26C228A55AA5000CAD6E /* FitnessApp */ = {
 			isa = PBXGroup;
 			children = (
+				AF69C0F428A56A2E002CA2AE /* Onboarding */,
 				AF69C0F328A56A0B002CA2AE /* Home */,
 				AF69C0F628A56A3D002CA2AE /* Settings */,
 				AF69C0F528A56A37002CA2AE /* Profile */,
-				AF69C0F428A56A2E002CA2AE /* Onboarding */,
 				AF8D5B2328A5662600030511 /* TabBar */,
 				AF69C11728A5958D002CA2AE /* Managers */,
 				AF69C11E28A59673002CA2AE /* Models */,
+				AF69C12128A5E4D7002CA2AE /* CustomViews */,
 				AF69C0EF28A56943002CA2AE /* Resources */,
 				AF8D5B2228A5661A00030511 /* Launch */,
 				AF5C26D428A55AA6000CAD6E /* Info.plist */,
@@ -222,6 +231,7 @@
 				AF69C11128A56B13002CA2AE /* Coordinator.swift */,
 				AF69C11328A56B70002CA2AE /* Extensions.swift */,
 				AF69C11528A56B9F002CA2AE /* Observable.swift */,
+				AF69C12A28A5F300002CA2AE /* Constants.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -283,6 +293,16 @@
 				AF69C11F28A5968B002CA2AE /* User.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		AF69C12128A5E4D7002CA2AE /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */,
+				AF69C12628A5E6A8002CA2AE /* CustomButton.swift */,
+				AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */,
+			);
+			path = CustomViews;
 			sourceTree = "<group>";
 		};
 		AF8D5B2228A5661A00030511 /* Launch */ = {
@@ -544,6 +564,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF69C12728A5E6A8002CA2AE /* CustomButton.swift in Sources */,
 				AF69C10A28A56AD3002CA2AE /* LoginViewController.swift in Sources */,
 				AF69C11928A595AB002CA2AE /* AuthManager.swift in Sources */,
 				AF69C0F828A56A64002CA2AE /* HomeViewController.swift in Sources */,
@@ -553,6 +574,8 @@
 				AF5C26CE28A55AA5000CAD6E /* FitnessApp.xcdatamodeld in Sources */,
 				AF69C10028A56A98002CA2AE /* SettingsCoordinator.swift in Sources */,
 				AF69C10C28A56ADE002CA2AE /* RegisterViewController.swift in Sources */,
+				AF69C12328A5E4FA002CA2AE /* CustomTextField.swift in Sources */,
+				AF69C12B28A5F300002CA2AE /* Constants.swift in Sources */,
 				AF69C11428A56B70002CA2AE /* Extensions.swift in Sources */,
 				AF69C10228A56AA2002CA2AE /* SettingsViewModel.swift in Sources */,
 				AF69C11228A56B13002CA2AE /* Coordinator.swift in Sources */,
@@ -563,6 +586,7 @@
 				AF69C10828A56AC4002CA2AE /* ProfileCoordinator.swift in Sources */,
 				AF69C0EE28A5682A002CA2AE /* MainTabBarController.swift in Sources */,
 				AF69C0EC28A567E3002CA2AE /* SceneDelegate.swift in Sources */,
+				AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */,
 				AF69C11628A56B9F002CA2AE /* Observable.swift in Sources */,
 				AF69C12028A5968B002CA2AE /* User.swift in Sources */,
 				AF69C10E28A56AE7002CA2AE /* OnboardingCoordinator.swift in Sources */,

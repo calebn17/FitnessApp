@@ -11,27 +11,47 @@ import UIKit
 final class OnboardingCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var sender: UIViewController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, sender: UIViewController) {
         self.navigationController = navigationController
+        self.sender = sender
     }
     
     func start() {
         let vc = LoginViewController()
-        navigationController.pushViewController(vc, animated: true)
+        vc.coordinator = self
+        vc.modalPresentationStyle = .fullScreen
+        sender.present(vc, animated: true)
     }
     
-    func childDidFinish(_ child: Coordinator?) {
-           for (index, coordinator) in childCoordinators.enumerated() {
-               if coordinator === child {
-                   childCoordinators.remove(at: index)
-                   break
-               }
-           }
-       }
+    func presentRegister(sender: LoginViewController) {
+        let vc = RegisterViewController()
+        vc.coordinator = self
+        vc.delegate = sender
+        let navVC = UINavigationController(rootViewController: vc)
+        sender.present(navVC, animated: true)
+    }
+    
+    func dismissRegister(sender: RegisterViewController) {
+        sender.dismiss(animated: true)
+    }
+    
+    func dismissLogin(sender: LoginViewController) {
+        sender.dismiss(animated: true)
+    }
 }
 
 extension OnboardingCoordinator: UINavigationControllerDelegate {
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+                break
+            }
+        }
+    }
+    
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // Read the view controller we’re moving from.
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {

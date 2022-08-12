@@ -33,9 +33,9 @@ final class HomeCoordinator: NSObject, Coordinator {
     }
     
     func presentLogin(sender: HomeViewController) {
-        let vc = LoginViewController()
-        vc.modalPresentationStyle = .fullScreen
-        sender.present(vc, animated: true)
+        let child = OnboardingCoordinator(navigationController: navigationController, sender: sender)
+        childCoordinators.append(child)
+        child.start()
     }
 }
 
