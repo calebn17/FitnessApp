@@ -42,6 +42,12 @@
 		AF69C12728A5E6A8002CA2AE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12628A5E6A8002CA2AE /* CustomButton.swift */; };
 		AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */; };
 		AF69C12B28A5F300002CA2AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12A28A5F300002CA2AE /* Constants.swift */; };
+		AF7134D428A7F40B001CB075 /* PostViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134D328A7F40B001CB075 /* PostViewModels.swift */; };
+		AF7134D828A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134D728A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift */; };
+		AF7134DA28A7FC83001CB075 /* PostPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134D928A7FC83001CB075 /* PostPostCollectionViewCell.swift */; };
+		AF7134DC28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DB28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift */; };
+		AF7134DE28A7FCB5001CB075 /* TimePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */; };
+		AF7134E028A9EF18001CB075 /* ActionsPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DF28A9EF18001CB075 /* ActionsPostCollectionViewCell.swift */; };
 		AFF0511728A5673200A11E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0511628A5673200A11E10 /* AppDelegate.swift */; };
 		D2790401EF95A1B04B5E83E5 /* Pods_FitnessAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90DA2D6A87C4EE7C48103214 /* Pods_FitnessAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -109,6 +115,12 @@
 		AF69C12628A5E6A8002CA2AE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
 		AF69C12A28A5F300002CA2AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AF7134D328A7F40B001CB075 /* PostViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModels.swift; sourceTree = "<group>"; };
+		AF7134D728A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF7134D928A7FC83001CB075 /* PostPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF7134DB28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF7134DF28A9EF18001CB075 /* ActionsPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		AFF0511628A5673200A11E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B88D346021C2CF7AA738C79A /* Pods-FitnessApp-FitnessAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FitnessApp-FitnessAppUITests/Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3DD4AB7714C06921B5E1205 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -192,6 +204,7 @@
 			children = (
 				AF69C0F428A56A2E002CA2AE /* Onboarding */,
 				AF69C0F328A56A0B002CA2AE /* Home */,
+				AF7134D228A7F392001CB075 /* Post */,
 				AF69C0F628A56A3D002CA2AE /* Settings */,
 				AF69C0F528A56A37002CA2AE /* Profile */,
 				AF8D5B2328A5662600030511 /* TabBar */,
@@ -303,6 +316,19 @@
 				AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */,
 			);
 			path = CustomViews;
+			sourceTree = "<group>";
+		};
+		AF7134D228A7F392001CB075 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				AF7134D328A7F40B001CB075 /* PostViewModels.swift */,
+				AF7134D728A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift */,
+				AF7134D928A7FC83001CB075 /* PostPostCollectionViewCell.swift */,
+				AF7134DF28A9EF18001CB075 /* ActionsPostCollectionViewCell.swift */,
+				AF7134DB28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift */,
+				AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */,
+			);
+			path = Post;
 			sourceTree = "<group>";
 		};
 		AF8D5B2228A5661A00030511 /* Launch */ = {
@@ -567,8 +593,10 @@
 				AF69C12728A5E6A8002CA2AE /* CustomButton.swift in Sources */,
 				AF69C10A28A56AD3002CA2AE /* LoginViewController.swift in Sources */,
 				AF69C11928A595AB002CA2AE /* AuthManager.swift in Sources */,
+				AF7134DC28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift in Sources */,
 				AF69C0F828A56A64002CA2AE /* HomeViewController.swift in Sources */,
 				AFF0511728A5673200A11E10 /* AppDelegate.swift in Sources */,
+				AF7134D428A7F40B001CB075 /* PostViewModels.swift in Sources */,
 				AF69C0FC28A56A80002CA2AE /* HomeViewModel.swift in Sources */,
 				AF69C11D28A595CA002CA2AE /* DatabaseManager.swift in Sources */,
 				AF5C26CE28A55AA5000CAD6E /* FitnessApp.xcdatamodeld in Sources */,
@@ -587,10 +615,14 @@
 				AF69C0EE28A5682A002CA2AE /* MainTabBarController.swift in Sources */,
 				AF69C0EC28A567E3002CA2AE /* SceneDelegate.swift in Sources */,
 				AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */,
+				AF7134D828A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift in Sources */,
+				AF7134DA28A7FC83001CB075 /* PostPostCollectionViewCell.swift in Sources */,
 				AF69C11628A56B9F002CA2AE /* Observable.swift in Sources */,
+				AF7134DE28A7FCB5001CB075 /* TimePostCollectionViewCell.swift in Sources */,
 				AF69C12028A5968B002CA2AE /* User.swift in Sources */,
 				AF69C10E28A56AE7002CA2AE /* OnboardingCoordinator.swift in Sources */,
 				AF69C0FA28A56A72002CA2AE /* HomeCoordinator.swift in Sources */,
+				AF7134E028A9EF18001CB075 /* ActionsPostCollectionViewCell.swift in Sources */,
 				AF69C0FE28A56A8D002CA2AE /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

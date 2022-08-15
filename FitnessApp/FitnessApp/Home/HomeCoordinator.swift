@@ -20,6 +20,8 @@ final class HomeCoordinator: NSObject, Coordinator {
     func start() {
         let vc = HomeViewController()
         vc.coordinator = self
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.navigationItem.backButtonDisplayMode = .minimal
         navigationController.pushViewController(vc, animated: true)
     }
 
