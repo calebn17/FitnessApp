@@ -54,6 +54,17 @@ final class HomeCoordinator: NSObject, Coordinator {
         sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         sender.present(sheet, animated: true)
     }
+    
+    func presentCommentModal(sender: HomeViewController, user: User) {
+        
+    }
+    
+    @MainActor func presentShareModal(sender: HomeViewController, user: User) {
+        let firstAction = "Checkout \(user.username)'s Post!"
+        let shareAction = UIActivityViewController(activityItems: [firstAction], applicationActivities: nil)
+        shareAction.isModalInPresentation = true
+        sender.present(shareAction, animated: true)
+    }
 }
 
 extension HomeCoordinator: UINavigationControllerDelegate {

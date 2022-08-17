@@ -12,8 +12,11 @@ final class HomeViewController: UIViewController {
 //MARK: - Properties
     weak var coordinator: HomeCoordinator?
     private let viewModel = HomeViewModel()
+    
+//MARK: - SubViews
     private var collectionView: UICollectionView?
 
+//MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -47,7 +50,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func updateUI() {
-        viewModel.posts.bind {[weak self] _ in
+        viewModel.observablePosts.bind {[weak self] _ in
             self?.collectionView?.reloadData()
         }
     }
@@ -71,18 +74,19 @@ final class HomeViewController: UIViewController {
     }
 }
 
+//MARK: - Collection View Methods
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return viewModel.posts.value?.count ?? 0
+        return viewModel.observablePosts.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.posts.value?[section].count ?? 0
+        return viewModel.observablePosts.value?[section].count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cellType = viewModel.posts.value?[indexPath.section][indexPath.row] else {return UICollectionViewCell()}
+        guard let cellType = viewModel.observablePosts.value?[indexPath.section][indexPath.row] else {return UICollectionViewCell()}
         
         switch cellType{
             
@@ -117,10 +121,29 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         case .actions(let viewModel):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActionsPostCollectionViewCell.identifier ,for: indexPath)
                     as? ActionsPostCollectionViewCell else {return UICollectionViewCell()}
-       
+            cell.delegate = self
             cell.configure(with: viewModel)
             return cell
         }
+    }
+}
+
+//MARK: - Actions Cell
+extension HomeViewController: ActionsPostCollectionViewCellDelegate {
+    func tappedOnLikeButton(_ cell: ActionsPostCollectionViewCell, viewModel: ActionsPostViewModel, liked: Bool) {
+        NotificationCenter.default.post(name: NSNotification.Name("Liked"), object: nil, userInfo: nil)
+        
+        Task {
+            try await HomeViewModel.insertLike(viewModel: viewModel, liked: liked)
+        }
+    }
+    
+    func tappedOnCommentButton(_ cell: ActionsPostCollectionViewCell) {
+        coordinator?.presentCommentModal(sender: self, user: viewModel.currentUser)
+    }
+    
+    func tappedOnShareButton(_ cell: ActionsPostCollectionViewCell) {
+        coordinator?.presentShareModal(sender: self, user: viewModel.currentUser)
     }
 }
 

@@ -50,6 +50,28 @@ final class DatabaseManager {
         return user
     }
     
+//MARK: - General Posts
+    func updateLikeStatus(postID: String, postType: PostType, liked: Bool) async throws {
+        
+        switch postType {
+        case .run:
+            guard let data = try await postRunRef.document(postID).getDocument().data() else {return}
+            var viewModel = RunPostViewModel(with: data)
+            
+            if liked {
+                viewModel?.likers.append(currentUser.username)
+            } else {
+                viewModel?.likers.removeAll(where: { $0 == currentUser.username })
+            }
+            try await postRunRef.document(postID).setData(viewModel?.asDictionary() ?? [:])
+            
+        case .lift:
+            break
+        case .metcon:
+            break
+        }
+    }
+    
 //MARK: - Run Posts
     func insertRunPost(runVM: RunPostViewModel) async throws {
         try await userRef.document(currentUser.username).collection("run").document(runVM.model.id).setData(runVM.model.asDictionary() ?? [:])

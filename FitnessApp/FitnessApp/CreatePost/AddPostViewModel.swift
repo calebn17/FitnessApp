@@ -19,7 +19,7 @@ struct RunPostModel: Codable {
 struct RunPostViewModel: Codable {
     let username: String
     let profilePictureURL: URL?
-    let likers: [String]
+    var likers: [String]
     let actionsTaken: [PostActions]
     let postType: PostType
     let model: RunPostModel

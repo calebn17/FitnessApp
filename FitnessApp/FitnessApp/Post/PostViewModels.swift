@@ -39,7 +39,9 @@ struct PostPostViewModel {
 }
 
 struct ActionsPostViewModel {
-    let actionsTaken: [PostActions]
+    let id: String
+    let likers: [String]
+    let type: PostType
 }
 
 struct LikesPostViewModel {

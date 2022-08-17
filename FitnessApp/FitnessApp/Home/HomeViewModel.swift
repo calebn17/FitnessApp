@@ -12,7 +12,8 @@ struct HomeViewModel {
     
     var isNotAuthenticated: Bool { Auth.auth().currentUser == nil }
     var currentUser: User { return DatabaseManager.shared.currentUser }
-    @MainActor let posts = Observable<[[PostCellType]]>([])
+    @MainActor let observablePosts = Observable<[[PostCellType]]>([])
+    
     
     @MainActor func fetchPosts() async throws {
         guard var runPostViewModels = try await DatabaseManager.shared.getRunPosts() else {return}
@@ -35,13 +36,7 @@ struct HomeViewModel {
                         PostPostViewModel(
                             type: viewModel.postType,
                             name: viewModel.model.name,
-                            body: "\(viewModel.model.distance) miles | \(viewModel.model.duration) min | Pace: \(viewModel.model.avgSpeed) min/mi"
-                        )
-                ),
-                .actions(
-                    viewModel:
-                        ActionsPostViewModel(
-                            actionsTaken: viewModel.actionsTaken
+                            body: "\(viewModel.model.distance) miles | \(viewModel.model.duration) min | \(viewModel.model.avgSpeed) min/mi"
                         )
                 ),
                 .likes(
@@ -55,12 +50,24 @@ struct HomeViewModel {
                         TimestampPostViewModel(
                             dateCreatedString: String.date(from: Date(timeIntervalSince1970: Double(viewModel.model.dateCreated) ?? 0.0) ) ?? ""
                         )
+                ),
+                .actions(
+                    viewModel:
+                        ActionsPostViewModel(
+                            id: viewModel.model.id,
+                            likers: viewModel.likers,
+                            type: viewModel.postType
+                        )
                 )
                 
             ]
             return postCell
         }
         let posts = runPosts
-        self.posts.value =  posts
+        self.observablePosts.value = posts
+    }
+    
+    static func insertLike(viewModel: ActionsPostViewModel, liked: Bool) async throws {
+        try await DatabaseManager.shared.updateLikeStatus(postID: viewModel.id, postType: viewModel.type, liked: liked)
     }
 }

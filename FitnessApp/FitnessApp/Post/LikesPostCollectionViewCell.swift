@@ -11,6 +11,7 @@ class LikesPostCollectionViewCell: UICollectionViewCell {
     
 //MARK: - Properties
     static let identifier = "LikesPostCollectionViewCell"
+    private var likeCount: Int?
     
 //MARK: - SubViews
     private let likesCountLabel: CustomLabel = {
@@ -23,6 +24,7 @@ class LikesPostCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         backgroundColor = .secondarySystemBackground
         addSubviews()
+        NotificationCenter.default.addObserver(self, selector: #selector(didLike), name: NSNotification.Name("Liked"), object: nil)
     }
     
     required init?(coder: NSCoder) {
@@ -36,6 +38,12 @@ class LikesPostCollectionViewCell: UICollectionViewCell {
         likesCountLabel.frame = CGRect(x: 10, y: 15, width: likesCountLabel.width, height: likesCountLabel.height)
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        likeCount = 0
+        likesCountLabel.text = nil
+    }
+    
     private func addSubviews() {
         addSubview(likesCountLabel)
     }
@@ -43,5 +51,15 @@ class LikesPostCollectionViewCell: UICollectionViewCell {
 //MARK: - Configure
     func configure(with viewModel: LikesPostViewModel) {
         self.likesCountLabel.text = "\(viewModel.likers.count) likes"
+        
+        // used for notification observer
+        self.likeCount = viewModel.likers.count
+    }
+    
+//MARK: - Actions
+    @objc private func didLike() {
+        guard var likeCount = likeCount else {return}
+        likeCount += 1
+        likesCountLabel.text = "\(likeCount) likes"
     }
 }
