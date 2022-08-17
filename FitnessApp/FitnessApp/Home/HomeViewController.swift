@@ -19,6 +19,10 @@ final class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         handleIsAuthenticated()
         configureCollectionView()
+        configureNavBar()
+        fetchData()
+        updateUI()
+        addActions()
     }
     
     override func viewDidLayoutSubviews() {
@@ -26,32 +30,104 @@ final class HomeViewController: UIViewController {
         collectionView?.frame = view.bounds
     }
     
+//MARK: - Configure
+    private func configureNavBar() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+    }
+    
+    private func addActions() {
+        let control = UIRefreshControl()
+        control.addTarget(self, action: #selector(didPullToRefresh(_:)), for: .valueChanged)
+        collectionView?.refreshControl = control
+    }
     private func handleIsAuthenticated() {
         if viewModel.isNotAuthenticated {
             coordinator?.presentLogin(sender: self)
         }
     }
+    
+    private func updateUI() {
+        viewModel.posts.bind {[weak self] _ in
+            self?.collectionView?.reloadData()
+        }
+    }
+    
+//MARK: - Networking
+    private func fetchData() {
+        Task {
+            try await viewModel.fetchPosts()
+        }
+    }
+    
+//MARK: - Actions
+    @objc private func didTapAddButton() {
+        coordinator?.pushAddPostVC(sender: self)
+    }
+    
+    @objc private func didPullToRefresh(_ sender: UIRefreshControl) {
+        sender.beginRefreshing()
+        fetchData()
+        sender.endRefreshing()
+    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return viewModel.posts.value?.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return viewModel.posts.value?[section].count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell" , for: indexPath)
-        let colors: [UIColor] = [.red, .blue, .systemPink, .purple, .cyan]
-        cell.backgroundColor = colors[indexPath.row]
-        return cell
+        
+        guard let cellType = viewModel.posts.value?[indexPath.section][indexPath.row] else {return UICollectionViewCell()}
+        
+        switch cellType{
+            
+        case .owner(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OwnerPostCollectionViewCell.identifier ,for: indexPath)
+                    as? OwnerPostCollectionViewCell else {return UICollectionViewCell()}
+            
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .post(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PostPostCollectionViewCell.identifier ,for: indexPath)
+                    as? PostPostCollectionViewCell else {return UICollectionViewCell()}
+          
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .likes(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LikesPostCollectionViewCell.identifier ,for: indexPath)
+                    as? LikesPostCollectionViewCell else {return UICollectionViewCell()}
+          
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .timestamp(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TimePostCollectionViewCell.identifier ,for: indexPath)
+                    as? TimePostCollectionViewCell else {return UICollectionViewCell()}
+    
+            cell.configure(with: viewModel)
+            return cell
+            
+        case .actions(let viewModel):
+            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ActionsPostCollectionViewCell.identifier ,for: indexPath)
+                    as? ActionsPostCollectionViewCell else {return UICollectionViewCell()}
+       
+            cell.configure(with: viewModel)
+            return cell
+        }
     }
 }
+
+//MARK: - Configure CollectionView
 extension HomeViewController {
     private func configureCollectionView() {
-        let sectionHeight: CGFloat = 380
+        let sectionHeight: CGFloat = 330
         let collectionView = UICollectionView(
             frame: .zero,
             collectionViewLayout: UICollectionViewCompositionalLayout(sectionProvider: { index, _ in
@@ -65,7 +141,7 @@ extension HomeViewController {
                 let postItem = NSCollectionLayoutItem(
                     layoutSize: NSCollectionLayoutSize(
                         widthDimension: .fractionalWidth(1),
-                        heightDimension: .absolute(200)
+                        heightDimension: .absolute(150)
                     )
                 )
                 let actionsItem = NSCollectionLayoutItem(
@@ -96,9 +172,9 @@ extension HomeViewController {
                     subitems: [
                         ownerItem,
                         postItem,
-                        actionsItem,
                         likesItem,
-                        timeItem
+                        timeItem,
+                        actionsItem
                     ]
                 )
                 

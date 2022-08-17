@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct ProfileViewModel {
+    
+    var currentUser: User { return DatabaseManager.shared.currentUser }
+}

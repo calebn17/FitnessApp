@@ -11,16 +11,23 @@ import UIKit
 final class ProfileCoordinator: NSObject, Coordinator {
     var childCoordinators: [Coordinator] = []
     var navigationController: UINavigationController
+    var user: User
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController, user: User) {
         self.navigationController = navigationController
+        self.user = user
     }
     
     func start() {
         let vc = ProfileViewController()
+        vc.title = user.username
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.navigationItem.backButtonDisplayMode = .minimal
         navigationController.pushViewController(vc, animated: true)
     }
-    
+}
+
+extension ProfileCoordinator: UINavigationControllerDelegate {
     func childDidFinish(_ child: Coordinator?) {
             for (index, coordinator) in childCoordinators.enumerated() {
                 if coordinator === child {
@@ -29,9 +36,7 @@ final class ProfileCoordinator: NSObject, Coordinator {
                 }
             }
         }
-}
-
-extension ProfileCoordinator: UINavigationControllerDelegate {
+    
     func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
         // Read the view controller we’re moving from.
         guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else {

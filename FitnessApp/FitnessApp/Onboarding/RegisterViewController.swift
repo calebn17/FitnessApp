@@ -119,7 +119,7 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        let user = User(username: username.lowercased(), email: email.lowercased())
+        let user = User(username: username, email: email.lowercased())
         coordinator?.dismissRegister(sender: self)
         delegate?.didTapRegisterButton(self, user: user, password: password.lowercased(), imageData: image.pngData())
     }

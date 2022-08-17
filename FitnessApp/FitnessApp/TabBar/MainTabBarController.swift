@@ -11,7 +11,7 @@ class MainTabBarController: UITabBarController {
 
     let home = HomeCoordinator(navigationController: UINavigationController())
     let settings = SettingsCoordinator(navigationController: UINavigationController())
-    let profile = ProfileCoordinator(navigationController: UINavigationController())
+    let profile = ProfileCoordinator(navigationController: UINavigationController(), user: DatabaseManager.shared.currentUser)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -40,7 +40,7 @@
 		AF69C12028A5968B002CA2AE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C11F28A5968B002CA2AE /* User.swift */; };
 		AF69C12328A5E4FA002CA2AE /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */; };
 		AF69C12728A5E6A8002CA2AE /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12628A5E6A8002CA2AE /* CustomButton.swift */; };
-		AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */; };
+		AF69C12928A5ECE7002CA2AE /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12828A5ECE7002CA2AE /* CustomImageView.swift */; };
 		AF69C12B28A5F300002CA2AE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF69C12A28A5F300002CA2AE /* Constants.swift */; };
 		AF7134D428A7F40B001CB075 /* PostViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134D328A7F40B001CB075 /* PostViewModels.swift */; };
 		AF7134D828A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134D728A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift */; };
@@ -48,6 +48,12 @@
 		AF7134DC28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DB28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift */; };
 		AF7134DE28A7FCB5001CB075 /* TimePostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */; };
 		AF7134E028A9EF18001CB075 /* ActionsPostCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134DF28A9EF18001CB075 /* ActionsPostCollectionViewCell.swift */; };
+		AF7134E228AA8370001CB075 /* CustomActionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134E128AA8370001CB075 /* CustomActionButton.swift */; };
+		AF7134E428AA89D4001CB075 /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134E328AA89D4001CB075 /* CustomLabel.swift */; };
+		AF7134E728AAD0E0001CB075 /* AddPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134E628AAD0E0001CB075 /* AddPostViewController.swift */; };
+		AF7134E928AAD16D001CB075 /* AddPostCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134E828AAD16D001CB075 /* AddPostCoordinator.swift */; };
+		AF7134EB28AAD5E1001CB075 /* AddPostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134EA28AAD5E1001CB075 /* AddPostViewModel.swift */; };
+		AF7134ED28AAF2DE001CB075 /* AddPostRunView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF7134EC28AAF2DE001CB075 /* AddPostRunView.swift */; };
 		AFF0511728A5673200A11E10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AFF0511628A5673200A11E10 /* AppDelegate.swift */; };
 		D2790401EF95A1B04B5E83E5 /* Pods_FitnessAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90DA2D6A87C4EE7C48103214 /* Pods_FitnessAppTests.framework */; };
 /* End PBXBuildFile section */
@@ -113,7 +119,7 @@
 		AF69C11F28A5968B002CA2AE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		AF69C12628A5E6A8002CA2AE /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
-		AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		AF69C12828A5ECE7002CA2AE /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		AF69C12A28A5F300002CA2AE /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AF7134D328A7F40B001CB075 /* PostViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewModels.swift; sourceTree = "<group>"; };
 		AF7134D728A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerPostCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -121,6 +127,12 @@
 		AF7134DB28A7FC9A001CB075 /* LikesPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikesPostCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePostCollectionViewCell.swift; sourceTree = "<group>"; };
 		AF7134DF28A9EF18001CB075 /* ActionsPostCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsPostCollectionViewCell.swift; sourceTree = "<group>"; };
+		AF7134E128AA8370001CB075 /* CustomActionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomActionButton.swift; sourceTree = "<group>"; };
+		AF7134E328AA89D4001CB075 /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
+		AF7134E628AAD0E0001CB075 /* AddPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewController.swift; sourceTree = "<group>"; };
+		AF7134E828AAD16D001CB075 /* AddPostCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostCoordinator.swift; sourceTree = "<group>"; };
+		AF7134EA28AAD5E1001CB075 /* AddPostViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostViewModel.swift; sourceTree = "<group>"; };
+		AF7134EC28AAF2DE001CB075 /* AddPostRunView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPostRunView.swift; sourceTree = "<group>"; };
 		AFF0511628A5673200A11E10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B88D346021C2CF7AA738C79A /* Pods-FitnessApp-FitnessAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; path = "Target Support Files/Pods-FitnessApp-FitnessAppUITests/Pods-FitnessApp-FitnessAppUITests.release.xcconfig"; sourceTree = "<group>"; };
 		D3DD4AB7714C06921B5E1205 /* Pods-FitnessApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FitnessApp.debug.xcconfig"; path = "Target Support Files/Pods-FitnessApp/Pods-FitnessApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -205,12 +217,13 @@
 				AF69C0F428A56A2E002CA2AE /* Onboarding */,
 				AF69C0F328A56A0B002CA2AE /* Home */,
 				AF7134D228A7F392001CB075 /* Post */,
+				AF7134E528AAD0B5001CB075 /* CreatePost */,
 				AF69C0F628A56A3D002CA2AE /* Settings */,
 				AF69C0F528A56A37002CA2AE /* Profile */,
 				AF8D5B2328A5662600030511 /* TabBar */,
+				AF69C12128A5E4D7002CA2AE /* CustomViews */,
 				AF69C11728A5958D002CA2AE /* Managers */,
 				AF69C11E28A59673002CA2AE /* Models */,
-				AF69C12128A5E4D7002CA2AE /* CustomViews */,
 				AF69C0EF28A56943002CA2AE /* Resources */,
 				AF8D5B2228A5661A00030511 /* Launch */,
 				AF5C26D428A55AA6000CAD6E /* Info.plist */,
@@ -313,7 +326,9 @@
 			children = (
 				AF69C12228A5E4FA002CA2AE /* CustomTextField.swift */,
 				AF69C12628A5E6A8002CA2AE /* CustomButton.swift */,
-				AF69C12828A5ECE7002CA2AE /* CustomUIView.swift */,
+				AF69C12828A5ECE7002CA2AE /* CustomImageView.swift */,
+				AF7134E128AA8370001CB075 /* CustomActionButton.swift */,
+				AF7134E328AA89D4001CB075 /* CustomLabel.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -329,6 +344,17 @@
 				AF7134DD28A7FCB5001CB075 /* TimePostCollectionViewCell.swift */,
 			);
 			path = Post;
+			sourceTree = "<group>";
+		};
+		AF7134E528AAD0B5001CB075 /* CreatePost */ = {
+			isa = PBXGroup;
+			children = (
+				AF7134E628AAD0E0001CB075 /* AddPostViewController.swift */,
+				AF7134E828AAD16D001CB075 /* AddPostCoordinator.swift */,
+				AF7134EA28AAD5E1001CB075 /* AddPostViewModel.swift */,
+				AF7134EC28AAF2DE001CB075 /* AddPostRunView.swift */,
+			);
+			path = CreatePost;
 			sourceTree = "<group>";
 		};
 		AF8D5B2228A5661A00030511 /* Launch */ = {
@@ -597,10 +623,12 @@
 				AF69C0F828A56A64002CA2AE /* HomeViewController.swift in Sources */,
 				AFF0511728A5673200A11E10 /* AppDelegate.swift in Sources */,
 				AF7134D428A7F40B001CB075 /* PostViewModels.swift in Sources */,
+				AF7134E728AAD0E0001CB075 /* AddPostViewController.swift in Sources */,
 				AF69C0FC28A56A80002CA2AE /* HomeViewModel.swift in Sources */,
 				AF69C11D28A595CA002CA2AE /* DatabaseManager.swift in Sources */,
 				AF5C26CE28A55AA5000CAD6E /* FitnessApp.xcdatamodeld in Sources */,
 				AF69C10028A56A98002CA2AE /* SettingsCoordinator.swift in Sources */,
+				AF7134E928AAD16D001CB075 /* AddPostCoordinator.swift in Sources */,
 				AF69C10C28A56ADE002CA2AE /* RegisterViewController.swift in Sources */,
 				AF69C12328A5E4FA002CA2AE /* CustomTextField.swift in Sources */,
 				AF69C12B28A5F300002CA2AE /* Constants.swift in Sources */,
@@ -609,17 +637,21 @@
 				AF69C11228A56B13002CA2AE /* Coordinator.swift in Sources */,
 				AF69C10628A56ABA002CA2AE /* ProfileViewModel.swift in Sources */,
 				AF69C11028A56AFA002CA2AE /* OnboardingViewModel.swift in Sources */,
+				AF7134E428AA89D4001CB075 /* CustomLabel.swift in Sources */,
+				AF7134ED28AAF2DE001CB075 /* AddPostRunView.swift in Sources */,
 				AF69C11B28A595B6002CA2AE /* StorageManager.swift in Sources */,
 				AF69C10428A56AB0002CA2AE /* ProfileViewController.swift in Sources */,
 				AF69C10828A56AC4002CA2AE /* ProfileCoordinator.swift in Sources */,
 				AF69C0EE28A5682A002CA2AE /* MainTabBarController.swift in Sources */,
 				AF69C0EC28A567E3002CA2AE /* SceneDelegate.swift in Sources */,
-				AF69C12928A5ECE7002CA2AE /* CustomUIView.swift in Sources */,
+				AF69C12928A5ECE7002CA2AE /* CustomImageView.swift in Sources */,
 				AF7134D828A7FC5C001CB075 /* OwnerPostCollectionViewCell.swift in Sources */,
 				AF7134DA28A7FC83001CB075 /* PostPostCollectionViewCell.swift in Sources */,
 				AF69C11628A56B9F002CA2AE /* Observable.swift in Sources */,
 				AF7134DE28A7FCB5001CB075 /* TimePostCollectionViewCell.swift in Sources */,
+				AF7134E228AA8370001CB075 /* CustomActionButton.swift in Sources */,
 				AF69C12028A5968B002CA2AE /* User.swift in Sources */,
+				AF7134EB28AAD5E1001CB075 /* AddPostViewModel.swift in Sources */,
 				AF69C10E28A56AE7002CA2AE /* OnboardingCoordinator.swift in Sources */,
 				AF69C0FA28A56A72002CA2AE /* HomeCoordinator.swift in Sources */,
 				AF7134E028A9EF18001CB075 /* ActionsPostCollectionViewCell.swift in Sources */,

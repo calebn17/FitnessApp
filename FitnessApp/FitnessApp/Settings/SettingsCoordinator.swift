@@ -18,6 +18,8 @@ final class SettingsCoordinator: NSObject, Coordinator {
     func start() {
         let vc = SettingsViewController()
         vc.coordinator = self
+        vc.navigationItem.largeTitleDisplayMode = .never
+        vc.navigationItem.backButtonDisplayMode = .minimal
         navigationController.pushViewController(vc, animated: true)
     }
     

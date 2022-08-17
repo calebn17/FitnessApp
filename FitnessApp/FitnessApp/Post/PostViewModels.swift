@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum Post {
+enum PostCellType {
     case owner(viewModel: OwnerPostViewModel)
     case post(viewModel: PostPostViewModel)
     case likes(viewModel: LikesPostViewModel)
@@ -15,16 +15,16 @@ enum Post {
     case timestamp(viewModel: TimestampPostViewModel)
 }
 
-enum PostTypes {
-    case run
-    case lift
-    case metcon
+public enum PostType: String, Codable {
+    case run = "Run"
+    case lift = "Lift"
+    case metcon = "Metcon"
 }
 
-enum PostActions {
-    case like
-    case comment
-    case share
+enum PostActions: Codable {
+    case liked
+    case commented
+    case shared
 }
 
 struct OwnerPostViewModel {
@@ -33,12 +33,13 @@ struct OwnerPostViewModel {
 }
 
 struct PostPostViewModel {
-    let type: PostTypes
+    let type: PostType
+    let name: String
     let body: String
 }
 
 struct ActionsPostViewModel {
-    let action: PostActions
+    let actionsTaken: [PostActions]
 }
 
 struct LikesPostViewModel {
